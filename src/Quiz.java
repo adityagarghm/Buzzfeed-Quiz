@@ -3,6 +3,7 @@
  * Irene Feng Nov 2022
  * This is the class where we create the Quiz and run it. It has the main method.  
  */
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Quiz {
@@ -93,6 +94,14 @@ public class Quiz {
         q10.possibleAnswers[4] = new Answer("Granola + yogurt", dog);
         q10.possibleAnswers[5] = new Answer("Flip your bag inside out and look for an old snack.", fox);
 
+        Question qBonus = new Question("Your school announces a mysterious “Secret After-Hours Challenge” and gives every student a key to an unknown room. What do you do first?");
+        qBonus.possibleAnswers[0] = new Answer("Gather your closest friends so you can figure it out as a team", dog);      
+        qBonus.possibleAnswers[1] = new Answer("Head there immediately because it sounds fun and chaotic", dolphin);
+        qBonus.possibleAnswers[2] = new Answer("Walk in confidently like you're ready to take charge of whatever happens", lion);
+        qBonus.possibleAnswers[3] = new Answer("Study the key, the school map, and any clues before going", owl);   
+        qBonus.possibleAnswers[4] = new Answer("Sneak around the hallways to see what other people are doing first", fox); 
+        qBonus.possibleAnswers[5] = new Answer("Take your time, think through every possibility, and go only when you're prepared", cat); 
+
                 // ... more questions here
 
                 // For each question, ask, read input, store answer.
@@ -108,7 +117,9 @@ public class Quiz {
 
                 Category[] cList = {lion, owl, dolphin, cat, dog, fox };
                 // these need to be in the same order or the points will be incorrect!
-                int index = getMostPopularCatIndex(cList);
+                //if getMostPopularCatIndex(clist);
+                int index = 0;
+                //ArrayList index1 = getMostPopularCatIndex(cList);
                 System.out.println("If you were a board game, you would be " + cList[index].label + ". ");
                 System.out.println(cList[index].description);
 
@@ -127,15 +138,25 @@ public class Quiz {
 
         // returns the index that is the max
         // the tie breaker is the first Category that has the count is the "max" :/ 
-        public static int getMostPopularCatIndex(Category[] counts) {
-                int maxCount = 0;
-                int maxIndex = 0;
+        public static void getMostPopularCatIndex(Category[] counts) throws Exception {
+
+                ArrayList <Integer> pointCounter = new ArrayList<>();
                 for (int i = 0; i < counts.length; i++) {
-                        if (counts[i].points > maxCount) {
-                                maxCount = counts[i].points;
-                                maxIndex = i;
-                        }
+                        pointCounter.add(counts[i].points);
                 }
-                return maxIndex;
+                ArrayList<Integer> indexFinder = getMax(pointCounter,1,0);
+
+        } 
+        public static ArrayList getMax(ArrayList<Integer> pointCounter, int counter, int maxCount)throws Exception{
+                for (int i  = 0; i <pointCounter.size(); i++){
+                        if (pointCounter.get(i) < maxCount && pointCounter.get(i) != null){
+                        pointCounter.set(i, null); //removes the values that are less than the current maxCount
+                        }else{ 
+                                maxCount = pointCounter.get(i);
+                }}
+                if (counter !=0){
+                return getMax(pointCounter,counter -1,maxCount);//running my code twice bc it could have been in ascending order, now maxCount is adjusted
+                }
+                return pointCounter;//this is my final output, while I know this is supposed to go above as BC, it was causing a headache trying to run it recursively the other way 
         }
 }

@@ -24,19 +24,13 @@ public class Question {
 
         }
         int ans = sc.nextInt();
-        /*if (ans > this.possibleAnswers.length){
-            System.out.println("Please input a number between 1 and " + this.possibleAnswers.length);
-            return this.ask(sc);
-        }*/
        int validCount = 0;
         for (Answer a : possibleAnswers) {
             if (a == null) break;
             validCount++;
         }
-
-// Validate using validCount instead of array length
         if (ans < 1 || ans > validCount) {
-            System.out.println("Please input a number between 1 and " + validCount);
+            System.out.println("Please input a number between 1 and " + validCount);//checks the iunput
             return this.ask(sc);
         }   
         return possibleAnswers[ans - 1].cat;
