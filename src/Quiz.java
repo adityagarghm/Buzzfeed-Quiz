@@ -10,14 +10,12 @@ public class Quiz {
 
         public static void main(String[] args) throws Exception {
                 // Create Categories
-                Category monopoly = new Category("Monopoly",
-                                "You are traditional, fancy, and you like to call the shots.");
                 Category owl = new Category("Owl", "You are thoughtful, calm, and intellectual.");
-                Category dolphin = new Category("Dolphin", "You are social, upbeat, and adaptable");
-                Category fox = new Category("Fox", "You are clever, quick, and flexible");
-                Category lion = new Category("Lion", "You are confident, a leader, and bold");
+                Category dolphin = new Category("Dolphin", "You are social, upbeat, and adaptable.");
+                Category fox = new Category("Fox", "You are clever, quick, and flexible.");
+                Category lion = new Category("Lion", "You are confident, a leader, and bold.");
                 Category cat = new Category("Cat","You are chill, independent, and observant.");
-                Category dog = new Category("Dog","You are loyal, energetic, and cheerful. ");
+                Category dog = new Category("Dog","You are loyal, energetic, and cheerful.");
                 // Create Questions
                 // Attach Answers to Questions
                
@@ -119,7 +117,7 @@ public class Quiz {
         public static void gameIntro() {
                 // requires 1 to keep going
                 System.out.println("Which Board Game Are You?");
-                System.out.println("You get to choose numbers 1-4 for every question. Enter '1' to play!");
+                System.out.println("You get to choose numbers 1-5 or 1-6 for every question. Enter '1' to play!");
                 int play = sc.nextInt();
                 if (play != 1) {
                         System.out.println("Unidentifiable input. Please enter '1' to play");
