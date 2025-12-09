@@ -159,10 +159,9 @@ public class Quiz {
         public static ArrayList indexFinder(ArrayList <Integer> pointsNullArray){
                 ArrayList <Integer> indexer = new ArrayList<>();
                 for (int i = pointsNullArray.size()-1; i >=0; i--){
-                        if (pointsNullArray.get(i) ==null){
-                                pointsNullArray.remove(i);
-                        }
-                        indexer.add(i);
+                        if (pointsNullArray.get(i) != null){
+                                indexer.add(i);
+                        }else  pointsNullArray.remove(i);
                 }
              return indexer;
         }

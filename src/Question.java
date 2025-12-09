@@ -25,9 +25,7 @@ public class Question {
         for (int i = (indexes.size()-1); i>=0; i--) {//going left to right bc values are descending
             String choice = Integer.toString(counter + 1);
             counter ++; //can't rely on i, as i is decreasing and counter needs to be increasing
-
-            System.out.println("[" + choice + "]:" +
-                    this.possibleAnswers[indexes.get(i)].label);
+            System.out.println("[" + choice + "]:" + this.possibleAnswers[indexes.get(i)].label);
 
         }
         int ans = sc.nextInt();
@@ -38,12 +36,12 @@ public class Question {
         }
         if (ans < 1 || ans > validCount) {
             System.out.println("Please input a number between 1 and " + validCount);//checks the input
-            return this.ask(sc);
+            return this.bonus(sc, indexes);
         }   
         return possibleAnswers[ans - 1].cat;
     }
 
-    Category ask(Scanner sc) {
+    Category ask(Scanner sc) throws InterruptedException {
         for (int j = 0; j <70; j++){
             System.out.print("*");
         }
