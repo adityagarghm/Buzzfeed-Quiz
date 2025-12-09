@@ -12,39 +12,103 @@ public class Quiz {
                 // Create Categories
                 Category monopoly = new Category("Monopoly",
                                 "You are traditional, fancy, and you like to call the shots.");
-                Category catan = new Category("Catan", "You are very competitive "
-                                + "but it's hidden underneath a friendly verneer. You're kinda popular but you deny it.");
-                Category ers = new Category("ERS (Egyptian Ratscrew)",
-                                "You are a racket! You bring high energy and fun to any situation.");
-                Category hanabi = new Category("Hanabi", "You are a zen master. If given the choice, peace, no war.");
+                Category owl = new Category("Owl", "You are thoughtful, calm, and intellectual.");
+                Category dolphin = new Category("Dolphin", "You are social, upbeat, and adaptable");
+                Category fox = new Category("Fox", "You are clever, quick, and flexible");
+                Category lion = new Category("Lion", "You are confident, a leader, and bold");
+                Category cat = new Category("Cat","You are chill, independent, and observant.");
+                Category dog = new Category("Dog","You are loyal, energetic, and cheerful. ");
                 // Create Questions
-                Question q1 = new Question("Where are you at the pool party?");
                 // Attach Answers to Questions
-                q1.possibleAnswers[0] = new Answer("Outside playing catch at the pool.", ers);
-                q1.possibleAnswers[1] = new Answer("I'm the host of course, and entertaining my guests with stories.",
-                                monopoly);
-                q1.possibleAnswers[2] = new Answer("Having everyone eat the pie I made", catan);
-                q1.possibleAnswers[3] = new Answer("Eating pie and listening to a long story", hanabi);
+               
+        Question q1 = new Question("How do you usually study for a big test?");
+        q1.possibleAnswers[0] = new Answer("Make a full study guide and review calmly.", owl);
+        q1.possibleAnswers[1] = new Answer("Form a group and teach each other.", dolphin);
+        q1.possibleAnswers[2] = new Answer("Grind it out last minute but somehow make it work.", fox);
+        q1.possibleAnswers[3] = new Answer("Start early and stay consistent.", lion);
+        q1.possibleAnswers[4] = new Answer("Study only what you know will be on the test.", cat);
+        q1.possibleAnswers[5] = new Answer("Flashcards", dog);
 
-                Question q2 = new Question("You're in a rock band. What instrument do you play?");
-                q2.possibleAnswers[0] = new Answer("I'm the guitarist weeeo!", ers);
-                q2.possibleAnswers[1] = new Answer("I'm the drummer, without me, the band's nothing", monopoly);
-                q2.possibleAnswers[2] = new Answer("I'm the lead singer!", catan);
-                q2.possibleAnswers[3] = new Answer("I'm the manager, taking care of my players behind the scenes.",
-                                hanabi);
+        Question q2 = new Question("What are you like during group work?");
+        q2.possibleAnswers[0] = new Answer("You naturally take charge.", lion);
+        q2.possibleAnswers[1] = new Answer("You keep everyone focused + organized.", owl);
+        q2.possibleAnswers[2] = new Answer("You work quietly and pick up the slack.", cat);
+        q2.possibleAnswers[3] = new Answer("You encourage the group and make people feel included.", dog);
+        q2.possibleAnswers[4] = new Answer("You come up with ideas no one else thought of.", fox);
+
+        Question q3 = new Question("What’s your favorite school subject?");
+        q3.possibleAnswers[0] = new Answer("English", owl);
+        q3.possibleAnswers[1] = new Answer("Math", fox);
+        q3.possibleAnswers[2] = new Answer("Science", dolphin);
+        q3.possibleAnswers[3] = new Answer("Computer Science", cat);
+        q3.possibleAnswers[4] = new Answer("History", dog);
+
+        Question q4 = new Question("What’s your ideal weekend activity?");
+        q4.possibleAnswers[0] = new Answer("Going out with friends", dolphin);
+        q4.possibleAnswers[1] = new Answer("Watching movies alone and chilling", cat);
+        q4.possibleAnswers[2] = new Answer("Sports or outdoor stuff", dog);
+        q4.possibleAnswers[3] = new Answer("Reading, journaling, deep dive hobbies", owl);
+        q4.possibleAnswers[4] = new Answer("Getting ahead / working on goals", lion);
+        q4.possibleAnswers[5] = new Answer("Spontaneous adventures", fox);
+
+        Question q5 = new Question("Which trait do people compliment you on the most?");
+        q5.possibleAnswers[0] = new Answer("Leadership", lion);
+        q5.possibleAnswers[1] = new Answer("Wisdom or maturity", owl);
+        q5.possibleAnswers[2] = new Answer("Humor", dolphin);
+        q5.possibleAnswers[3] = new Answer("Chill personality", cat);
+        q5.possibleAnswers[4] = new Answer("Loyalty / kindness", dog);
+        q5.possibleAnswers[5] = new Answer("Creativity", fox);
+
+        Question q6 = new Question("What do you do if your teacher assigns a surprise group presentation?");
+        q6.possibleAnswers[0] = new Answer("You start planning instantly.", lion);
+        q6.possibleAnswers[1] = new Answer("You analyze what needs to be done and divide it.", owl);
+        q6.possibleAnswers[2] = new Answer("You boost morale and make it fun.", dolphin);
+        q6.possibleAnswers[3] = new Answer("You quietly work on your part and avoid chaos.", cat);
+        q6.possibleAnswers[4] = new Answer("You volunteer to present since others are nervous.", dog);
+
+        Question q7 = new Question("Pick a random setting.");
+        q7.possibleAnswers[0] = new Answer("Minimalist desk with soft lighting.", owl);
+        q7.possibleAnswers[1] = new Answer("Vibrant room full of posters + memories.", dolphin);
+        q7.possibleAnswers[2] = new Answer("Clean and bold, motivational quotes.", lion);
+        q7.possibleAnswers[3] = new Answer("Sports gear, water bottle, ready to go.", dog);
+        q7.possibleAnswers[4] = new Answer("Organized chaos: looks messy but you know where everything is.", fox);
+
+        Question q8 = new Question("Which hallway behavior matches you?");
+        q8.possibleAnswers[0] = new Answer("Walking fast like you have somewhere IMPORTANT to be.", lion);
+        q8.possibleAnswers[1] = new Answer("Walking while zoned out thinking about life.", owl);
+        q8.possibleAnswers[2] = new Answer("Talking to everyone you pass.", dolphin);
+        q8.possibleAnswers[3] = new Answer("Hugging the wall avoiding crowds.", cat);
+        q8.possibleAnswers[4] = new Answer("Taking shortcuts and weird side routes.", fox);
+
+        Question q9 = new Question("What’s your reaction when a teacher calls on you unexpectedly?");
+        q9.possibleAnswers[0] = new Answer("Answer confidently even if unsure.", lion);
+        q9.possibleAnswers[1] = new Answer("Laugh it off and try your best.", dolphin);
+        q9.possibleAnswers[2] = new Answer("Give the shortest answer possible.", cat);
+        q9.possibleAnswers[3] = new Answer("Sit up straight and give it a real shot.", dog);
+        q9.possibleAnswers[4] = new Answer("Give a weirdly clever answer that surprises the class.", fox);
+
+        Question q10 = new Question("Choose a snack to get through the school day.");
+        q10.possibleAnswers[0] = new Answer("Energy bar", lion);
+        q10.possibleAnswers[1] = new Answer("Dark chocolate or tea", owl);
+        q10.possibleAnswers[2] = new Answer("Fruit snacks", dolphin);
+        q10.possibleAnswers[3] = new Answer("Chips", cat);
+        q10.possibleAnswers[4] = new Answer("Granola + yogurt", dog);
+        q10.possibleAnswers[5] = new Answer("Flip your bag inside out and look for an old snack.", fox);
 
                 // ... more questions here
 
                 // For each question, ask, read input, store answer.
                 gameIntro();
-                Question[] qList = { q1, q2 };
+                Question[] qList = { q1, q2, q3, q4, q5, q6, q7, q8, q9, q10 };
                 for (Question q : qList) {
                         Category c = q.ask(sc);
                         c.points++;
                 }
                 // Get most common category from the questions asked
                 // Return Category
-                Category[] cList = { monopoly, catan, ers, hanabi };
+                
+
+                Category[] cList = {lion, owl, dolphin, cat, dog, fox };
                 // these need to be in the same order or the points will be incorrect!
                 int index = getMostPopularCatIndex(cList);
                 System.out.println("If you were a board game, you would be " + cList[index].label + ". ");
