@@ -117,11 +117,11 @@ public class Quiz {
 
                 Category[] cList = {lion, owl, dolphin, cat, dog, fox };
                 // these need to be in the same order or the points will be incorrect!
-                //if getMostPopularCatIndex(clist);
-                int index = 0;
-                //ArrayList index1 = getMostPopularCatIndex(cList);
-                System.out.println("If you were a board game, you would be " + cList[index].label + ". ");
-                System.out.println(cList[index].description);
+               // int index = 0;
+                ArrayList index1 = getMostPopularCatIndex(cList);
+                System.out.println(index1);
+                //System.out.println("If you were an animal, you would be " + cList[index].label + ". ");
+                //System.out.println(cList[index].description);
 
         }
 
@@ -138,13 +138,14 @@ public class Quiz {
 
         // returns the index that is the max
         // the tie breaker is the first Category that has the count is the "max" :/ 
-        public static void getMostPopularCatIndex(Category[] counts) throws Exception {
+        public static ArrayList getMostPopularCatIndex(Category[] counts) throws Exception {
 
                 ArrayList <Integer> pointCounter = new ArrayList<>();
                 for (int i = 0; i < counts.length; i++) {
                         pointCounter.add(counts[i].points);
                 }
-                ArrayList<Integer> indexFinder = getMax(pointCounter,1,0);
+                return indexFinder(getMax(pointCounter,1,0));
+                
 
         } 
         public static ArrayList getMax(ArrayList<Integer> pointCounter, int counter, int maxCount)throws Exception{
@@ -158,5 +159,15 @@ public class Quiz {
                 return getMax(pointCounter,counter -1,maxCount);//running my code twice bc it could have been in ascending order, now maxCount is adjusted
                 }
                 return pointCounter;//this is my final output, while I know this is supposed to go above as BC, it was causing a headache trying to run it recursively the other way 
+        }
+        public static ArrayList indexFinder(ArrayList <Integer> pointsNullArray){
+                ArrayList <Integer> indexer = new ArrayList<>();
+                for (int i = pointsNullArray.size(); i > 0; i--){
+                        if (pointsNullArray.get(i) ==null){
+                                pointsNullArray.remove(i);
+                        }
+                        indexer.add(i);
+                }
+             return indexer;
         }
 }
