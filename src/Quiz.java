@@ -1,7 +1,8 @@
 
 /*
  * Irene Feng Nov 2022
- * This is the class where we create the Quiz and run it. It has the main method.  
+ * This is the class where we create the Quiz and run it. It has the main method. 
+ * Aditya Garg 12/9/2025: Added questions, re made the way to find the winning category
  */
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -35,14 +36,14 @@ public class Quiz {
         q2.possibleAnswers[3] = new Answer("You encourage the group and make people feel included.", dog);
         q2.possibleAnswers[4] = new Answer("You come up with ideas no one else thought of.", fox);
 
-        Question q3 = new Question("What’s your favorite school subject?");
+        Question q3 = new Question("What's your favorite school subject?");
         q3.possibleAnswers[0] = new Answer("English", owl);
         q3.possibleAnswers[1] = new Answer("Math", fox);
         q3.possibleAnswers[2] = new Answer("Science", dolphin);
         q3.possibleAnswers[3] = new Answer("Computer Science", cat);
         q3.possibleAnswers[4] = new Answer("History", dog);
 
-        Question q4 = new Question("What’s your ideal weekend activity?");
+        Question q4 = new Question("What's your ideal weekend activity?");
         q4.possibleAnswers[0] = new Answer("Going out with friends", dolphin);
         q4.possibleAnswers[1] = new Answer("Watching movies alone and chilling", cat);
         q4.possibleAnswers[2] = new Answer("Sports or outdoor stuff", dog);
@@ -79,7 +80,7 @@ public class Quiz {
         q8.possibleAnswers[3] = new Answer("Hugging the wall avoiding crowds.", cat);
         q8.possibleAnswers[4] = new Answer("Taking shortcuts and weird side routes.", fox);
 
-        Question q9 = new Question("What’s your reaction when a teacher calls on you unexpectedly?");
+        Question q9 = new Question("What's your reaction when a teacher calls on you unexpectedly?");
         q9.possibleAnswers[0] = new Answer("Answer confidently even if unsure.", lion);
         q9.possibleAnswers[1] = new Answer("Laugh it off and try your best.", dolphin);
         q9.possibleAnswers[2] = new Answer("Give the shortest answer possible.", cat);
@@ -118,14 +119,14 @@ public class Quiz {
                 Category[] cList = {lion, owl, dolphin, cat, dog, fox };
                 // these need to be in the same order or the points will be incorrect!
                Category bonus = qBonus.bonus(sc,getMostPopularCatIndex(cList));
-                System.out.println("If you were an animal, you would be " + bonus.label + ". ");
+                System.out.println("If you were an animal, you would be " + bonus.label + ".");
                 System.out.println(bonus.description);
 
         }
 
         public static void gameIntro() {
                 // requires 1 to keep going
-                System.out.println("Which Board Game Are You?");
+                System.out.println("Which Animal Are You?");
                 System.out.println("You get to choose numbers 1-5 or 1-6 for every question. Enter '1' to play!");
                 int play = sc.nextInt();
                 if (play != 1) {
@@ -158,10 +159,10 @@ public class Quiz {
         }
         public static ArrayList indexFinder(ArrayList <Integer> pointsNullArray){
                 ArrayList <Integer> indexer = new ArrayList<>();
-                for (int i = pointsNullArray.size()-1; i >=0; i--){
-                        if (pointsNullArray.get(i) != null){
+                for (int i = pointsNullArray.size()-1; i >=0; i--){//going downwards bc I am removing items but storing their index, otherwise the indexes could all be the same
+                        if (pointsNullArray.get(i) != null){//store the indexes of the winnning categories in indexer
                                 indexer.add(i);
-                        }else  pointsNullArray.remove(i);
+                        }else  pointsNullArray.remove(i);//removes the null from the array, this step is not needed 
                 }
              return indexer;
         }

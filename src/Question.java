@@ -1,5 +1,6 @@
 /* Irene Feng 10/12/2022
 A question class with Answers.
+Aditya Garg 12/9/2025: Added bonus question method and revised ask() method
 */ 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -41,7 +42,7 @@ public class Question {
         return possibleAnswers[ans - 1].cat;
     }
 
-    Category ask(Scanner sc) throws InterruptedException {
+    Category ask(Scanner sc) {
         for (int j = 0; j <70; j++){
             System.out.print("*");
         }
