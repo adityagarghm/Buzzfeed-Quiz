@@ -94,7 +94,7 @@ public class Quiz {
         q10.possibleAnswers[4] = new Answer("Granola + yogurt", dog);
         q10.possibleAnswers[5] = new Answer("Flip your bag inside out and look for an old snack.", fox);
 
-        Question qBonus = new Question("Your school announces a mysterious “Secret After-Hours Challenge” and gives every student a key to an unknown room. What do you do first?");
+        Question qBonus = new Question("Tiebreaker: Your school announces a mysterious “Secret After-Hours Challenge” and gives every student a key to an unknown room. What do you do first?");
         qBonus.possibleAnswers[0] = new Answer("Gather your closest friends so you can figure it out as a team", dog);      
         qBonus.possibleAnswers[1] = new Answer("Head there immediately because it sounds fun and chaotic", dolphin);
         qBonus.possibleAnswers[2] = new Answer("Walk in confidently like you're ready to take charge of whatever happens", lion);
@@ -117,11 +117,9 @@ public class Quiz {
 
                 Category[] cList = {lion, owl, dolphin, cat, dog, fox };
                 // these need to be in the same order or the points will be incorrect!
-               // int index = 0;
-                ArrayList index1 = getMostPopularCatIndex(cList);
-                System.out.println(index1);
-                //System.out.println("If you were an animal, you would be " + cList[index].label + ". ");
-                //System.out.println(cList[index].description);
+               Category bonus = qBonus.bonus(sc,getMostPopularCatIndex(cList));
+                System.out.println("If you were an animal, you would be " + bonus.label + ". ");
+                System.out.println(bonus.description);
 
         }
 
@@ -135,22 +133,20 @@ public class Quiz {
                         gameIntro();
                 }
         }
-
-        // returns the index that is the max
-        // the tie breaker is the first Category that has the count is the "max" :/ 
+        //returns the index of the tie/most selected
         public static ArrayList getMostPopularCatIndex(Category[] counts) throws Exception {
 
                 ArrayList <Integer> pointCounter = new ArrayList<>();
-                for (int i = 0; i < counts.length; i++) {
-                        pointCounter.add(counts[i].points);
-                }
+            for (Category count : counts) {
+                pointCounter.add(count.points);
+            }
                 return indexFinder(getMax(pointCounter,1,0));
                 
 
         } 
         public static ArrayList getMax(ArrayList<Integer> pointCounter, int counter, int maxCount)throws Exception{
                 for (int i  = 0; i <pointCounter.size(); i++){
-                        if (pointCounter.get(i) < maxCount && pointCounter.get(i) != null){
+                        if ( pointCounter.get(i) == null || pointCounter.get(i) < maxCount ){
                         pointCounter.set(i, null); //removes the values that are less than the current maxCount
                         }else{ 
                                 maxCount = pointCounter.get(i);
@@ -162,7 +158,7 @@ public class Quiz {
         }
         public static ArrayList indexFinder(ArrayList <Integer> pointsNullArray){
                 ArrayList <Integer> indexer = new ArrayList<>();
-                for (int i = pointsNullArray.size(); i > 0; i--){
+                for (int i = pointsNullArray.size()-1; i >=0; i--){
                         if (pointsNullArray.get(i) ==null){
                                 pointsNullArray.remove(i);
                         }
