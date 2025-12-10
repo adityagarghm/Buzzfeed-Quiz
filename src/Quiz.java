@@ -118,10 +118,11 @@ public class Quiz {
 
                 Category[] cList = {lion, owl, dolphin, cat, dog, fox };
                 // these need to be in the same order or the points will be incorrect!
-               Category bonus = qBonus.bonus(sc,getMostPopularCatIndex(cList));
+
+               Category bonus = qBonus.bonus(sc,getMostPopularCatIndex(cList),cList);
                 System.out.println("If you were an animal, you would be " + bonus.label + ".");
                 System.out.println(bonus.description);
-
+                answerCounterPrinter(createpointCounter(cList),bonus,cList);
         }
 
         public static void gameIntro() {
@@ -136,12 +137,16 @@ public class Quiz {
         }
         //returns the index of the tie/most selected
         public static ArrayList getMostPopularCatIndex(Category[] counts) throws Exception {
+               //this method is essentially just something that connects to the rest of the methods
+                return indexFinder(getMax(createpointCounter(counts),1,0));
 
+        }
+        public static ArrayList createpointCounter(Category[] counts) throws Exception {
                 ArrayList <Integer> pointCounter = new ArrayList<>();
             for (Category count : counts) {
                 pointCounter.add(count.points);
             }
-                return indexFinder(getMax(pointCounter,1,0));
+                return pointCounter;//creates pointCounter Array list based on the fields from clist --> field points
                 
 
         } 
@@ -157,13 +162,29 @@ public class Quiz {
                 }
                 return pointCounter;//this is my final output, while I know this is supposed to go above as BC, it was causing a headache trying to run it recursively the other way 
         }
+
         public static ArrayList indexFinder(ArrayList <Integer> pointsNullArray){
+                System.out.println(pointsNullArray);
                 ArrayList <Integer> indexer = new ArrayList<>();
                 for (int i = pointsNullArray.size()-1; i >=0; i--){//going downwards bc I am removing items but storing their index, otherwise the indexes could all be the same
                         if (pointsNullArray.get(i) != null){//store the indexes of the winnning categories in indexer
                                 indexer.add(i);
                         }else  pointsNullArray.remove(i);//removes the null from the array, this step is not needed 
                 }
+                System.out.println(indexer);
              return indexer;
+        }
+
+        //this method is going to print the array of final scores
+        public static void answerCounterPrinter(ArrayList <Integer> pointCounter, Category bonus, Category[] categoryList){
+                System.out.println("Amount of times you selected each question: ");
+                for (int i = 0; i < categoryList.length; i++){
+                        if( categoryList[i].label.equals(bonus.label)){//java requests equal() here
+                                int pointsFor = pointCounter.get(i) + 1;
+                                pointCounter.set(i, pointsFor);
+                        }
+                        System.out.println(categoryList[i].label + ": " + pointCounter.get(i));
+                }
+
         }
 }

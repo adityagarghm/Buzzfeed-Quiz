@@ -14,9 +14,11 @@ public class Question {
     }
 
     // ask bonus
-    Category bonus(Scanner sc, ArrayList <Integer> indexes) {
+    Category bonus(Scanner sc, ArrayList <Integer> indexes, Category[] categoryList) {
+        System.out.println(indexes);
         if (indexes.size() == 1){
-            return possibleAnswers[indexes.get(0)].cat;
+            System.out.println(categoryList[indexes.get(0)].label);
+            return categoryList[indexes.get(0)];
         }
         for (int j = 0; j <70; j++){
             System.out.print("*");
@@ -37,8 +39,9 @@ public class Question {
         }
         if (ans < 1 || ans > validCount) {
             System.out.println("Please input a number between 1 and " + validCount);//checks the input
-            return this.bonus(sc, indexes);
+            return this.bonus(sc, indexes,categoryList);
         }   
+        System.out.println(possibleAnswers[ans - 1].cat);
         return possibleAnswers[ans - 1].cat;
     }
 
