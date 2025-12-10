@@ -120,8 +120,11 @@ public class Quiz {
                 // these need to be in the same order or the points will be incorrect!
 
                Category bonus = qBonus.bonus(sc,getMostPopularCatIndex(cList),cList);
-                System.out.println("If you were an animal, you would be " + bonus.label + ".");
+               for (int i =0; i <= 70; i++){System.out.print("*");}
+                System.out.println("\n If you were an animal, you would be " + bonus.label + ".");
                 System.out.println(bonus.description);
+                for (int i =0; i <= 70; i++){System.out.print("*");} 
+                System.out.println("");
                 answerCounterPrinter(createpointCounter(cList),bonus,cList);
         }
 
@@ -164,14 +167,12 @@ public class Quiz {
         }
 
         public static ArrayList indexFinder(ArrayList <Integer> pointsNullArray){
-                System.out.println(pointsNullArray);
                 ArrayList <Integer> indexer = new ArrayList<>();
                 for (int i = pointsNullArray.size()-1; i >=0; i--){//going downwards bc I am removing items but storing their index, otherwise the indexes could all be the same
                         if (pointsNullArray.get(i) != null){//store the indexes of the winnning categories in indexer
                                 indexer.add(i);
                         }else  pointsNullArray.remove(i);//removes the null from the array, this step is not needed 
                 }
-                System.out.println(indexer);
              return indexer;
         }
 
