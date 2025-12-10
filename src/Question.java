@@ -15,6 +15,7 @@ public class Question {
 
     // ask bonus
     Category bonus(Scanner sc, ArrayList <Integer> indexes, Category[] categoryList) {
+       ArrayList <Answer> bonusAnswers = new ArrayList<>();
         if (indexes.size() == 1){
             return categoryList[indexes.get(0)];
         }
@@ -22,24 +23,21 @@ public class Question {
             System.out.print("*");
         }
         System.out.println("\n" + this.label);
+
         int counter = 0;
         for (int i = (indexes.size()-1); i>=0; i--) {//going left to right bc values are descending
             String choice = Integer.toString(counter + 1);
             counter ++; //can't rely on i, as i is decreasing and counter needs to be increasing
             System.out.println("[" + choice + "]:" + this.possibleAnswers[indexes.get(i)].label);
-
+            bonusAnswers.add(possibleAnswers[indexes.get(i)]);
         }
         int ans = sc.nextInt();
-       int validCount = 0;
-        for (Answer a : possibleAnswers) {
-            if (a == null) break;
-            validCount++;
-        }
+       int validCount = indexes.size();
         if (ans < 1 || ans > validCount) {
             System.out.println("Please input a number between 1 and " + validCount);//checks the input
             return this.bonus(sc, indexes,categoryList);
         }   
-        return possibleAnswers[ans - 1].cat;
+        return bonusAnswers.get(ans - 1).cat;
     }
 
     Category ask(Scanner sc) {
@@ -55,14 +53,18 @@ public class Question {
                     this.possibleAnswers[i].label);
 
         }
-        int ans = sc.nextInt();
-       int validCount = 0;
+        int ans = 0; 
+        boolean answerTest = sc.hasNextInt(); 
+        if (answerTest == true){ans = sc.nextInt();
+        }
+        int validCount = 0;
         for (Answer a : possibleAnswers) {
             if (a == null) break;
             validCount++;
         }
-        if (ans < 1 || ans > validCount) {
+        if (ans < 1 || ans > validCount || answerTest == false) {
             System.out.println("Please input a number between 1 and " + validCount);//checks the iunput
+            sc.next();
             return this.ask(sc);
         }   
         return possibleAnswers[ans - 1].cat;

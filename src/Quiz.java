@@ -116,16 +116,16 @@ public class Quiz {
                 // Return Category
                 
 
-                Category[] cList = {lion, owl, dolphin, cat, dog, fox };
+                Category[] cList = {dog, dolphin, lion, owl, fox, cat };
                 // these need to be in the same order or the points will be incorrect!
 
                Category bonus = qBonus.bonus(sc,getMostPopularCatIndex(cList),cList);
                for (int i =0; i <= 70; i++){System.out.print("*");}
-                System.out.println("\n If you were an animal, you would be " + bonus.label + ".");
+                System.out.println("\nIf you were an animal, you would be " + bonus.label + ".");
                 System.out.println(bonus.description);
                 for (int i =0; i <= 70; i++){System.out.print("*");} 
                 System.out.println("");
-                answerCounterPrinter(createpointCounter(cList),bonus,cList);
+                answerCounterPrinter(createpointCounter(cList),bonus,cList, getMostPopularCatIndex(cList));
         }
 
         public static void gameIntro() {
@@ -149,6 +149,7 @@ public class Quiz {
             for (Category count : counts) {
                 pointCounter.add(count.points);
             }
+
                 return pointCounter;//creates pointCounter Array list based on the fields from clist --> field points
                 
 
@@ -177,14 +178,16 @@ public class Quiz {
         }
 
         //this method is going to print the array of final scores
-        public static void answerCounterPrinter(ArrayList <Integer> pointCounter, Category bonus, Category[] categoryList){
+        public static void answerCounterPrinter(ArrayList <Integer> pointCounter, Category bonus, Category[] categoryList, ArrayList <Integer> indexer) throws InterruptedException{
+                Thread.sleep(6);
                 System.out.println("Amount of times you selected each question: ");
                 for (int i = 0; i < categoryList.length; i++){
-                        if( categoryList[i].label.equals(bonus.label)){//java requests equal() here
+                        if( categoryList[i].label.equals(bonus.label) && indexer.size() > 1){//java requests equal() here
                                 int pointsFor = pointCounter.get(i) + 1;
                                 pointCounter.set(i, pointsFor);
                         }
-                        System.out.println(categoryList[i].label + ": " + pointCounter.get(i));
+                        Thread.sleep(6);
+                        System.out.println(categoryList[i].label + ": " + pointCounter.get(i));                        
                 }
 
         }
