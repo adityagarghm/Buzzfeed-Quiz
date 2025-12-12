@@ -1,9 +1,11 @@
+
 /* Irene Feng 10/12/2022
 A question class with Answers.
 Aditya Garg 12/9/2025: Added bonus question method and revised ask() method
-*/ 
+*/
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class Question {
     // Fields
     String label;
@@ -14,29 +16,29 @@ public class Question {
     }
 
     // ask bonus
-    Category bonus(Scanner sc, ArrayList <Integer> indexes, Category[] categoryList) {
-       ArrayList <Answer> bonusAnswers = new ArrayList<>();
-        if (indexes.size() == 1){
+    Category bonus(Scanner sc, ArrayList<Integer> indexes, Category[] categoryList) {
+        ArrayList<Answer> bonusAnswers = new ArrayList<>();
+        if (indexes.size() == 1) {
             return categoryList[indexes.get(0)];
         }
-        for (int j = 0; j <70; j++){
+        for (int j = 0; j < 70; j++) {
             System.out.print("*");
         }
         System.out.println("\n" + this.label);
 
         int counter = 0;
-        for (int i = (indexes.size()-1); i>=0; i--) {//going left to right bc values are descending
+        for (int i = (indexes.size() - 1); i >= 0; i--) {// going left to right bc values are descending
             String choice = Integer.toString(counter + 1);
-            counter ++; //can't rely on i, as i is decreasing and counter needs to be increasing
+            counter++; // can't rely on i, as i is decreasing and counter needs to be increasing
             System.out.println("[" + choice + "]:" + this.possibleAnswers[indexes.get(i)].label);
             bonusAnswers.add(possibleAnswers[indexes.get(i)]);
         }
         int ans = sc.nextInt();
-       int validCount = indexes.size();
+        int validCount = indexes.size();
         if (ans < 1 || ans > validCount) {
-            System.out.println("Please input a number between 1 and " + validCount);//checks the input
-            return this.bonus(sc, indexes,categoryList);
-        }   
+            System.out.println("Please input a number between 1 and " + validCount);// checks the input
+            return this.bonus(sc, indexes, categoryList);
+        }
         return bonusAnswers.get(ans - 1).cat;
     }
 
@@ -63,8 +65,8 @@ public class Question {
             validCount++;
         }
         if (ans < 1 || ans > validCount || answerTest == false) {
-            System.out.println("Please input a number between 1 and " + validCount);//checks the iunput
-            sc.next();
+            System.out.println("Please input a number between 1 and " + validCount);//checks the input
+            if (answerTest == false)sc.next();
             return this.ask(sc);
         }   
         return possibleAnswers[ans - 1].cat;
